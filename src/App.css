@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Layout */
+.layout-page-container {
+  height: 100vh;
+}
+
+/* .ant-layout-sider-children {
+  background-color: rgb(6, 83, 83);
+} */
+
+
+/* Sider */
+.logo {  
+  margin: 16px;
+  text-align: center;
+}
+
+.logo img {
+  height: 40px;
+}
+
+
+
+/* Menu */
+/* .ant-menu {
+  background-color: rgb(49, 247, 247);
+}  */
+
+.ant-menu-item {
+  background-color: rgb(33, 82, 111);
+  
+}
+
+
+
+
+
+/* Header */
+.ant-layout-header.Header{
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 0;
+}
+
+.trigger-icon {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+
+/* Content */
+/* .content-container { 
+  margin: 50px 16px 0px;
+} */
+
+.content-container {
+  margin: 10px 10px;
+  padding: 24px;
+  min-height: 280px;
+  background-color: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo img {
+    animation: App-logo-spin infinite 5s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.tablee {
+  align-items: center;
+}
+
+.form-container {
+padding-left: 0px;
+padding-right: 20px;
+}
