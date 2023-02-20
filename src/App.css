@@ -91,3 +91,18 @@
 padding-left: 0px;
 padding-right: 20px;
 }
+
+
+.form {
+  margin: 10px;
+}
+
+.input-name {
+  margin-bottom: 10px;
+}
+.input-age {
+  margin-bottom: 10px;
+}
+.input-address {
+  margin-bottom: 10px;
+}

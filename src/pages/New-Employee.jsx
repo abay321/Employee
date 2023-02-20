@@ -1,113 +1,70 @@
 import React from "react";
-import { Button, Form, Input, InputNumber } from "antd";
+import { useNavigate } from "react-router-dom";
+
+import { Alert, Button, Form, Input, InputNumber, Space } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import * as HiIcons from 'react-icons/hi'
+import TextArea from "antd/es/input/TextArea";
+import axios from "axios";
 
 const NewEmployee = () => {
-  const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
+  const API_PATH = "http://localhost:8000/Data";
+  const [input, setInput] = React.useState({
+    name: "",
+    email: "",
+    address: "",
+  });
+  const navigate = useNavigate();
 
-  /* eslint-disable no-template-curly-in-string */
-  const validateMessages = {
-    required: "${label} is required!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${min} and ${max}",
-    },
-  };
-  /* eslint-enable no-template-curly-in-string */
-
-  const onFinish = (values) => {
-    console.log(values);
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios.post(`${API_PATH}`, input).then((respons) => {
+      // <Alert
+      //   message="Success"
+      //   description="Data has been added"
+      //   type="success"
+      //   action={
+      //     <Space direction="horizontal">
+      //       <Button size="small" type="primary" onClick={navigate("/employee-data")}>
+      //         Accept
+      //       </Button>
+      //     </Space>
+      //   }
+      //   />;
+      alert('data been add')
+      navigate('/employee-data')
+    }).catch(error => console.log(error))
   };
 
   return (
     <div>
       <div>New Data</div>
-      <div className="form-container">
-      <Form
-        {...layout}
-        name="nest-messages"
-        onFinish={onFinish}
-        style={{
-          maxWidth: 600,
-        }}
-        validateMessages={validateMessages}
-      >
-        <Form.Item
-          name={["user", "name"]}
-          label="Name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name={["user", "age"]}
-          label="Age"
-          rules={[
-            {
-              type: "number",
-              min: 0,
-              max: 99,
-            },
-          ]}
-        >
-          <InputNumber />
-        </Form.Item>
-        <Form.Item
-          name={["user", "address"]}
-          label="Address"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        {/* <Form.Item
-          name={["user", "email"]}
-          label="Email"
-          rules={[
-            {
-              type: "email",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item> */}
-        {/* <Form.Item name={["user", "website"]} label="Website">
-          <Input />
-        </Form.Item> */}
-        {/* <Form.Item name={["user", "introduction"]} label="Introduction">
-          <Input.TextArea />
-        </Form.Item> */}
-        <Form.Item
-          wrapperCol={{
-            ...layout.wrapperCol,
-            offset: 8,
-          }}
-        >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-      <div>
-        <Form />
-      </div>
-      </div>
+      <Space>
+        <form className="form" onSubmit={handleSubmit}>
+          <Input
+            className="input-name"
+            size="large"
+            placeholder="name"
+            addonBefore={<UserOutlined />}
+            onChange={e => setInput({...input, name: e.target.value})}
+          />
+          <Input
+            className="input-name"
+            size="large"
+            placeholder="email"
+            addonBefore={<HiIcons.HiOutlineMail />}
+            onChange={e => setInput({...input, email: e.target.value})}
+          />
+          <TextArea
+            className="input-address"
+            rows={2}
+            placeholder="Address"
+            maxLength={20}
+            onChange={e => setInput({...input, address: e.target.value})}
+          />
+          <Button className="d" type="primary" onClick={handleSubmit}>Submit</Button>
+        </form>
+      </Space>
     </div>
   );
 };
