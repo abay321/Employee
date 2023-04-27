@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { SideNav } from "./SideNav";
 import { PageContent } from "./page-content/PageContent";
@@ -12,12 +12,12 @@ import {
 import { Layout, Menu } from "antd";
 import "../App.css";
 
-
-
 const Dashboard = () => {
   const { Header, Sider, Content } = Layout;
-  const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [collapsed, setCollapsed] = useState(true);
+  const [selectedKeys, setSelectedKeys] = useState([location.pathname]);
   return (
     <Layout className="layout-page-container">
       <Sider
@@ -30,21 +30,23 @@ const Dashboard = () => {
           <img src="./logo192.png" alt="logo" />
         </div>
         <div className="menu-container">
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          onClick={(item) => {
-            navigate(item.key);
-          }}
-          items={SideNav.map(data => {
-            return {
-              key: data.key,
-              label: data.label,
-              icon: data.icon,
-            };
-          })}
-        />
+          <Menu
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={["/"]}
+            selectedKeys={selectedKeys}
+            onClick={(item) => {
+              navigate(item.key);
+              setSelectedKeys(item.key);
+            }}
+            items={SideNav.map((data) => {
+              return {
+                key: data.key,
+                label: data.label,
+                icon: data.icon,
+              };
+            })}
+          />
         </div>
       </Sider>
       <Layout className="layout-header-content-container">

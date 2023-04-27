@@ -1,3 +1,22 @@
 {
-  "Data": []
+  "Data": [
+    {
+      "name": "dfgdg",
+      "email": "gg",
+      "address": "sf",
+      "id": 1
+    },
+    {
+      "name": "bbgf",
+      "email": "hgfhfg",
+      "address": "hfghhg",
+      "id": 2
+    },
+    {
+      "name": "samsung",
+      "email": "sdgsg",
+      "address": "sg",
+      "id": 3
+    }
+  ]
 }

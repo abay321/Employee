@@ -4,7 +4,7 @@ export const SideNav = [
     {
         label: "Employee",
         icon: <FaIcons.FaUser />,
-        key:'/employee-data'
+        key:'/'
     },
     {
         label: "New Employee",
